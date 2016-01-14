@@ -2,4 +2,5 @@ extends layout
 
 block content
 	div
-		img(src="/public/_img/#{cardName}.png")
+	- for cardName in cardNames
+		img(src="/public/_img/#{cardName}.png" width=90 height=160)

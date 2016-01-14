@@ -6,19 +6,28 @@ express = require('express');
 router = express.Router();
 
 router.route('/randomcard').get(function(req, res) {
-  var cardName;
-  cardName = createCardName();
+  var cardNames, i, j;
+  cardNames = [];
+  for (i = j = 1; j <= 9; i = j += 1) {
+    cardNames[i] = createCardName();
+  }
+  console.log(cardNames);
   res.render('randomcard', {
-    cardName: cardName
+    cardNames: cardNames
   });
 });
 
 createCardName = function() {
-  var cardNumber, suitNames, suitNumber;
+  var cardNumber, cards, suitNames, suitNumber;
+  cards = {};
+  cards.club = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+  cards.dmnd = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+  cards.hart = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+  cards.spad = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
+  cards.joke = [1, 2];
   suitNames = ["club", "dmnd", "hart", "spad", "joke"];
-  suitNumber = Math.ceil(Math.random() * 4);
-  cardNumber = suitNumber < 4 ? Math.ceil(Math.random() * 12) : Math.ceil(Math.random() * 2);
-  console.log(suitNames[suitNumber], cardNumber, suitNumber);
+  suitNumber = Math.floor(Math.random() * suitNames.length);
+  cardNumber = suitNumber < 4 ? Math.ceil(Math.random() * cards[suitNames[suitNumber]].length) : Math.ceil(Math.random() * 2);
   return suitNames[suitNumber] + cardNumber;
 };
 
