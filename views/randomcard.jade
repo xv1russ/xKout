@@ -1,6 +1,7 @@
 extends layout
 
 block content
-	div
-	- for cardName in cardNames
-		img(src="/public/_img/#{cardName}.png" width=90 height=160)
+	- for i in [1, 2, 3, 4, 5, 6]
+		div
+			- for cardName in cardNames[i]
+					img(src="/public/_img/#{cardName}.png" height=80)

@@ -1,20 +1,27 @@
+html, body
+	height: 100%
+	width: 100%
 body
-	height: 600px
 	display: flex
 	flex-direction: column
 header, section, footer
 	display: flex
 	align-items: center
 	justify-content: space-around
-	width: 1280px
+	width: 100%
 header, footer
-	height: 20%
+	height: 10%
 header
 	background: #d70270
 section
-	height: 60%
+	flex-direction: column
+	height: 80%
 	background: #fdfdfd
-section div:first-child
-	display: none
+	div
+		width: 100%
+		display: flex
+		justify-content: space-around
+		img:first-child
+			display: none
 footer
 	background: pink

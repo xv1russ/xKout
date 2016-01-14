@@ -1,25 +1,33 @@
 express = require 'express'
 router = express.Router()
 
+createCardName = ->
+	position = Math.floor Math.random() * cards.length
+	cards.splice position, 1
+
+resetCards = ->
+	for i in [1..13] by 1
+		cards[i - 1] = "club#{i}"
+		cards[i + 12] = "dmnd#{i}"
+		cards[i + 25] = "hart#{i}"
+		cards[i + 38] = "spad#{i}"
+		if i < 3
+			cards[i + 51] = "joke#{i}"	
+
+cards = []
+
+resetCards()
+
 router.route '/randomcard'
 	.get (req, res) ->
-		cardNames = []
-		for i in [1..9] by 1
-			cardNames[i] = createCardName()
+		cardNames = {}
+		for i in [1..6] by 1
+			cardNames[i] = []
+			for j in [1..9] by 1
+				cardNames[i][j] = createCardName()
 		console.log cardNames
+		resetCards()
 		res.render 'randomcard', {cardNames}
 		return
-
-createCardName = () ->
-	cards = {}
-	cards.club = [1..13]
-	cards.dmnd = [1..13]
-	cards.hart = [1..13]
-	cards.spad = [1..13]
-	cards.joke = [1..2]
-	suitNames = ["club", "dmnd", "hart", "spad", "joke"]
-	suitNumber = Math.floor Math.random() * (suitNames.length)
-	cardNumber = if suitNumber < 4 then Math.ceil Math.random() * cards[suitNames[suitNumber]].length else Math.ceil Math.random() * 2
-	suitNames[suitNumber] + cardNumber
 
 module.exports = router
