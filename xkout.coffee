@@ -1,7 +1,6 @@
-express = require 'express.io'
+express = require 'express'
 router = require './router'
 app = express()
-app.http().io()
 
 app.set 'view engine', 'jade'
 app.set 'views', './views'

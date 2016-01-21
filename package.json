@@ -1,26 +1,29 @@
 {
-  "name": "xkout",
-  "version": "0.1.0",
-  "description": "Online 7km game made with node.js",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zunon/xKout.git"
-  },
-  "author": "Zunon",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/zunon/xKoot/issues"
-  },
-  "homepage": "https://github.com/zunon/xKoot#readme",
-  "devDependencies": {
-    "coffee-script": "^1.10.0",
-    "gulp": "^3.9.0",
-    "stylus": "^0.53.0"
-  },
-  "dependencies": {
-    "connect": "^3.4.0",
-    "express": "^4.13.3",
-    "jade": "^1.11.0"
-  }
+    "name": "xkout",
+    "version": "0.1.0",
+    "description": "Online 7km game made with node.js",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/zunon/xKout.git"
+    },
+    "scripts": {
+        "start" : "node-dev xkout"
+    },
+    "author": "Zunon",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/zunon/xKoot/issues"
+    },
+    "homepage": "https://github.com/zunon/xKoot#readme",
+    "devDependencies": {
+        "coffee-script": "^1.10.0",
+        "gulp": "^3.9.0",
+        "stylus": "^0.53.0"
+    },
+    "dependencies": {
+        "connect": "^3.4.0",
+        "express": "^4.13.3",
+        "jade": "^1.11.0"
+    }
 }
