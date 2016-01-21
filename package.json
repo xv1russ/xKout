@@ -1,36 +1,19 @@
 {
-  "name": "xkoot",
-  "version": "0.0.1",
+  "name": "xkout",
+  "version": "0.0.2",
   "description": "Online 7km game made with node.js",
   "main": "index.js",
-  "dependencies": {
-    "coffee-script": "^1.10.0",
-    "express": "^4.13.3",
-    "gulp": "^3.9.0",
-    "jade": "^1.11.0",
-    "stylus": "^0.53.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zunon/xKoot.git"
+    "url": "git+https://github.com/zunon/xKout.git"
   },
-  "keywords": [
-    "card",
-    "web",
-    "node",
-    "express",
-    "jade",
-    "compass",
-    "coffeescript"
-  ],
   "author": "Zunon",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/zunon/xKoot/issues"
   },
-  "homepage": "https://github.com/zunon/xKoot#readme"
+  "homepage": "https://github.com/zunon/xKoot#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
 }
