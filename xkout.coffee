@@ -1,5 +1,5 @@
 express = require 'express'
-router = require './router'
+router = require './scripts/router'
 app = express()
 
 app.set 'view engine', 'jade'

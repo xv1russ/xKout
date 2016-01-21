@@ -3,7 +3,7 @@ var app, express, router;
 
 express = require('express');
 
-router = require('./router');
+router = require('./scripts/router');
 
 app = express();
 
