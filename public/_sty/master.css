@@ -20,7 +20,7 @@ footer {
   height: 10%;
 }
 header {
-  background: #d70270;
+  background: #808080;
 }
 section {
   flex-direction: column;
@@ -36,5 +36,5 @@ section div img:first-child {
   display: none;
 }
 footer {
-  background: #ffc0cb;
+  background: #d3d3d3;
 }
