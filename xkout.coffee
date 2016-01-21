@@ -1,4 +1,4 @@
-express = require 'express'
+express = require 'express.io'
 router = require './router'
 app = express()
 
