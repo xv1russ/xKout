@@ -8,16 +8,19 @@
     "url": "git+https://github.com/zunon/xKout.git"
   },
   "author": "Zunon",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/zunon/xKoot/issues"
   },
   "homepage": "https://github.com/zunon/xKoot#readme",
   "devDependencies": {
-    "gulp": "^3.9.0"
+    "coffee-script": "^1.10.0",
+    "gulp": "^3.9.0",
+    "stylus": "^0.53.0"
   },
   "dependencies": {
-    "express.io": "^1.1.13",
+    "connect": "^3.4.0",
+    "express": "^4.13.3",
     "jade": "^1.11.0"
   }
 }

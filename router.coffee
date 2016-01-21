@@ -1,5 +1,7 @@
-express = require 'express'
+express = require 'express.io'
 router = express.Router()
+
+console.log "\n\n#{express}\n\n"
 
 createCardName = ->
 	position = Math.floor Math.random() * cards.length
@@ -12,14 +14,13 @@ resetCards = ->
 		cards[i + 25] = "hart#{i}"
 		cards[i + 38] = "spad#{i}"
 		if i < 3
-			cards[i + 51] = "joke#{i}"	
+			cards[i + 51] = "joke#{i}"
 
 cards = []
 
 resetCards()
 
-router.route '/randomcard'
-	.get (req, res) ->
+router.get '/randomcard', (req, res) ->
 		cardNames = {}
 		for i in [1..6] by 1
 			cardNames[i] = []
