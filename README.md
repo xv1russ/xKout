@@ -9,8 +9,13 @@ Todo
 --
 #### Version 1.0.0
 - [x] Add random card generation
-- [ ] Live card room creation
+- [ ] Live card room creation - *in progress*
+	- [ ] Test out sockets using chat
+	- [ ] Make the chat send only card names using buttons/dropdown
+	- [ ] Make the chat messages into images
+	- [ ] Card buttons delete themselves when clicked
 - [ ] Limit rooms to 6 people
+	- [ ] give each participant a unique set of 9 cards
 - [ ] Add game rules
 - [ ] Add Sign up and sign in functionality
 - [ ] Keep track of wins and losses
