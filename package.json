@@ -15,5 +15,9 @@
   "homepage": "https://github.com/zunon/xKoot#readme",
   "devDependencies": {
     "gulp": "^3.9.0"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "jade": "^1.11.0"
   }
 }
