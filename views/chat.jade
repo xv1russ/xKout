@@ -4,6 +4,10 @@ block metastuff
 block content
 	div(id="chat")
 		div(id="incoming")
-		form
+			ul(id="messages")
+		form(id="chatForm")
 			input(id="textfield" type="text")
-			button Send
+			input(type="submit" value="Send")
+block footer
+	script(src="/socket.io/socket.io.js")
+	script(src="/public/_scr/chat-client.js")

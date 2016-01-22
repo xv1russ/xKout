@@ -23,7 +23,13 @@ app.use('/', router);
 app.use('/public', express["static"]('./public'));
 
 socket_io.on('connection', function(socket) {
-  return console.log('A user connected');
+  console.log('A user connected');
+  socket.on('disconnect', function() {
+    return console.log('A user disconnected');
+  });
+  return socket.on('chatMessage', function(message) {
+    return socket_io.emit('chatMessage', message);
+  });
 });
 
 http.listen(port, function() {

@@ -7,7 +7,16 @@
 #chat #incoming {
   height: 80%;
   background: #666;
-  color: #f00;
+  overflow-y: scroll;
+}
+#chat #incoming ul {
+  width: 100%;
+  color: #fff;
+  list-style-type: none;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 #chat form {
   display: flex;

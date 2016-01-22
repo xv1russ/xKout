@@ -10,7 +10,7 @@ Todo
 #### Version 1.0.0
 - [x] Add random card generation
 - [ ] Live card room creation - *in progress*
-	- [ ] Test out sockets using chat
+	- [x] Test out sockets using chat
 	- [ ] Make the chat send only card names using buttons/dropdown
 	- [ ] Make the chat messages into images
 	- [ ] Card buttons delete themselves when clicked
