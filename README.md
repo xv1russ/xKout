@@ -12,7 +12,7 @@ Todo
 - [ ] Live card room creation - *in progress*
 	- [x] Test out sockets using chat
 	- [x] Make the chat send only card names using buttons/dropdown
-	- [ ] Make the chat messages into images
+	- [x] Make the chat messages into images
 	- [ ] Card buttons delete themselves when clicked
 - [ ] Limit rooms to 6 people
 	- [ ] give each participant a unique set of 9 cards
