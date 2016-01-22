@@ -8,3 +8,9 @@
   height: 80%;
   background: #666;
 }
+#chat form {
+  display: flex;
+}
+#chat form #textfield {
+  width: 80%;
+}
