@@ -11,7 +11,7 @@ Todo
 - [x] Add random card generation
 - [ ] Live card room creation - *in progress*
 	- [x] Test out sockets using chat
-	- [ ] Make the chat send only card names using buttons/dropdown
+	- [x] Make the chat send only card names using buttons/dropdown
 	- [ ] Make the chat messages into images
 	- [ ] Card buttons delete themselves when clicked
 - [ ] Limit rooms to 6 people
