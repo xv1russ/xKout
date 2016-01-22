@@ -19,6 +19,6 @@ Todo
 	- [ ] give each participant a unique set of 9 cards
 	- [ ] Card buttons delete themselves when clicked
 	- [ ] Visual elements
-- [ ] Add game rules
+- [ ] Add game rulesp
 - [ ] Add Sign up and sign in functionality
 - [ ] Keep track of wins and losses
