@@ -6,7 +6,26 @@ block content
 		div(id="incoming")
 			ul(id="messages")
 		form(id="chatForm")
-			input(id="textfield" type="text")
+			select(id="card")
+				option(value=1) Two
+				option(value=2) Three
+				option(value=3) Four
+				option(value=4) Five
+				option(value=5) Six
+				option(value=6) Seven
+				option(value=7) Eight
+				option(value=8) Nine
+				option(value=9) Ten
+				option(value=10) Jack
+				option(value=11) Queen
+				option(value=12) King
+				option(value=13) Ace
+			p of
+			select(id="suite")
+				option(value="club") Clubs
+				option(value="dmnd") Diamonds
+				option(value="hart") Hearts
+				option(value="spad") Spades
 			input(type="submit" value="Send")
 block footer
 	script(src="/socket.io/socket.io.js")
