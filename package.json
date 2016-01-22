@@ -2,14 +2,16 @@
   "name": "xkout",
   "version": "0.1.0",
   "description": "Online 7km game made with node.js",
-  "main": "index.js",
+  "main": "xkout.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zunon/xKout.git"
   },
   "scripts": {
     "prestart": "gulp",
-    "start": "node-dev xkout"
+    "start": "node-dev xkout",
+    "start-dev": "gulp dev",
+    "test": "node ./node_modules/concurrently/src/main.js --kill-others \"npm start\" \"npm run start-dev\""
   },
   "author": "Zunon",
   "license": "MIT",
@@ -20,6 +22,7 @@
   "devDependencies": {
     "browser-sync": "^2.11.1",
     "coffee-script": "^1.10.0",
+    "concurrently": "^1.0.0",
     "gulp": "^3.9.0",
     "gulp-coffee": "^2.3.1",
     "gulp-stylus": "^2.2.0",
@@ -33,7 +36,8 @@
   ],
   "dependencies": {
     "express": "^4.13.3",
-    "jade": "^1.11.0"
+    "jade": "^1.11.0",
+    "socket.io": "^1.4.4"
   },
   "contributors": [
     {

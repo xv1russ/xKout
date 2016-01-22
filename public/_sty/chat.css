@@ -7,6 +7,7 @@
 #chat #incoming {
   height: 80%;
   background: #666;
+  color: #f00;
 }
 #chat form {
   display: flex;
