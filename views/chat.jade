@@ -3,8 +3,18 @@ block metastuff
 	link(rel="stylesheet" type="text/css" href="/public/_sty/chat.css")
 block content
 	div(id="chat")
+		form(id="chatConnection")
+			label
+				h2 Username:
+				input(id="user" type="text", placeholder="Username")
+			label
+				h2 Chatroom:
+				input(id="room" type="text", placeholder="Room Name")
+			input(type="submit", value="Join")
+				
 		div(id="incoming")
 			ul(id="messages")
+				
 		form(id="chatForm")
 			select(id="card")
 				option(value=1) Two
@@ -20,12 +30,15 @@ block content
 				option(value=11) Queen
 				option(value=12) King
 				option(value=13) Ace
+				
 			p of
+			
 			select(id="suite")
 				option(value="club") Clubs
 				option(value="dmnd") Diamonds
 				option(value="hart") Hearts
 				option(value="spad") Spades
+				
 			input(type="submit" value="Send")
 block footer
 	script(src="/socket.io/socket.io.js")

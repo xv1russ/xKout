@@ -1,5 +1,11 @@
+@import "/public/_sty/reset.css";
+@font-face {
+  font-family: Roboto;
+  src: url("/public/_fnt/Roboto-Regular.ttf");
+}
 html,
 body {
+  font-family: Roboto, sans-serif;
   height: 100%;
   width: 100%;
 }
