@@ -1,17 +1,18 @@
-var setSocketEvents, socket;
+var currentRoom, socket;
 
-socket = '';
+socket = io('/chat');
+
+currentRoom = '';
 
 $('#chatForm').on('submit', function() {
   var card, msg, suite;
-  if (socket !== '') {
+  if (currentRoom !== '') {
     suite = $('#suite').val();
     card = $('#card').val();
     msg = suite + card;
     console.log(msg);
     socket.emit('chatMessage', msg);
     $('#textfield').val('');
-    setSocketEvents();
   } else {
     alert('Join a channel first');
   }
@@ -19,20 +20,33 @@ $('#chatForm').on('submit', function() {
 });
 
 $('#chatConnection').on('submit', function() {
-  if ($('#user').val() !== '' && $('#room').val() !== '') {
-    console.log('Creating socket');
-    socket = io($('#room').val());
-    socket.emit('user', $('#user').val());
+  var roomName, userName;
+  userName = $('#user').val();
+  roomName = $('#room').val();
+  if (currentRoom === '') {
+    if (userName !== '' && roomName !== '') {
+      console.log('joining room');
+      socket.emit('user', userName);
+      socket.emit('joinRoom', roomName);
+      currentRoom = roomName;
+      $('#user').parent().hide();
+    } else {
+      alert('input values');
+    }
   } else {
-    alert('input values');
+    if (roomName !== '') {
+      console.log('joining room');
+      socket.emit('leaveRoom', currentRoom);
+      socket.emit('joinRoom', roomName);
+      currentRoom = roomName;
+    } else {
+      alert('input value');
+    }
   }
   return false;
 });
 
-setSocketEvents = function() {
-  socket.on('chatMessage', function(message) {
-    $('#messages').append($("<li>")).append($("<img>")).attr({
-      src: "/public/_img/" + message + ".png"
-    });
-  });
-};
+socket.on('chatMessage', function(message, username) {
+  console.log('Recieved message');
+  $('#messages').append($("<li><p>" + username + ":</p><img src='/public/_img/" + message + ".png'/></li>"));
+});

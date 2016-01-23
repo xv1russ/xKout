@@ -1,4 +1,4 @@
-var app, express, http, io, port, router, socket_io;
+var app, chat, express, http, io, people, port, router, socketIO;
 
 express = require('express');
 
@@ -10,9 +10,13 @@ app = express();
 
 http = require('http').Server(app);
 
-socket_io = io(http);
+socketIO = io(http);
+
+chat = socketIO.of('/chat');
 
 port = 8080;
+
+people = {};
 
 app.set('view engine', 'jade');
 
@@ -22,13 +26,28 @@ app.use('/', router);
 
 app.use('/public', express["static"]('./public'));
 
-socket_io.on('connection', function(socket) {
+chat.on('connection', function(socket) {
+  people[socket.id] = {};
   console.log('A user connected');
-  socket.on('disconnect', function() {
-    return console.log('A user disconnected');
+  socket.on('joinRoom', function(roomName) {
+    console.log(people[socket.id].name + " joined " + roomName);
+    socket.join(roomName);
+    people[socket.id].room = roomName;
   });
-  return socket.on('chatMessage', function(message) {
-    return socket_io.emit('chatMessage', message);
+  socket.on('leaveRoom', function(roomName) {
+    console.log(people[socket.id].name + " left " + roomName);
+    socket.leave(roomName);
+    people[socket.id].room = '';
+  });
+  socket.on('user', function(userName) {
+    people[socket.id].name = userName;
+  });
+  socket.on('disconnect', function() {
+    console.log('A user disconnected');
+  });
+  socket.on('chatMessage', function(message) {
+    console.log("Recieved message: " + message);
+    chat.to(people[socket.id].room).emit('chatMessage', message, people[socket.id].name);
   });
 });
 
