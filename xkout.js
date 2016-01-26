@@ -41,7 +41,7 @@ chat.on('connection', function(socket) {
     console.log(people[socket.id].name + " left " + roomName);
     socket.leave(roomName);
     people[socket.id].room = '';
-    rooms[roomName].users[socket.id] = null;
+    delete rooms[roomName].users[socket.id];
   });
   socket.on('user', function(userName) {
     people[socket.id].name = userName;

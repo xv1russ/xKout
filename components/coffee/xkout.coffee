@@ -40,7 +40,7 @@ chat.on 'connection', (socket) ->
 		console.log "#{people[socket.id].name} left #{roomName}"
 		socket.leave roomName
 		people[socket.id].room = ''
-		rooms[roomName].users[socket.id] = null
+		delete rooms[roomName].users[socket.id]
 		return
 
 	socket.on 'user', (userName) ->
