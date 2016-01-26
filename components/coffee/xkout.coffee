@@ -12,6 +12,7 @@ chat = socketIO.of '/chat'
 # Options
 port = 8080
 people = {}
+rooms = {}
 
 # ~~~ EXPRESS ~~~
 # Express settings
@@ -32,12 +33,14 @@ chat.on 'connection', (socket) ->
 		console.log "#{people[socket.id].name} joined #{roomName}"
 		socket.join roomName
 		people[socket.id].room = roomName
+		rooms[roomName].users[socket.id] = people[socket.id]
 		return
 
 	socket.on 'leaveRoom', (roomName) ->
 		console.log "#{people[socket.id].name} left #{roomName}"
 		socket.leave roomName
 		people[socket.id].room = ''
+		rooms[roomName].users[socket.id] = null
 		return
 
 	socket.on 'user', (userName) ->

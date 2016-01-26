@@ -1,4 +1,4 @@
-var app, chat, express, http, io, people, port, router, socketIO;
+var app, chat, express, http, io, people, port, rooms, router, socketIO;
 
 express = require('express');
 
@@ -18,6 +18,8 @@ port = 8080;
 
 people = {};
 
+rooms = {};
+
 app.set('view engine', 'jade');
 
 app.set('views', './views');
@@ -33,11 +35,13 @@ chat.on('connection', function(socket) {
     console.log(people[socket.id].name + " joined " + roomName);
     socket.join(roomName);
     people[socket.id].room = roomName;
+    rooms[roomName].users[socket.id] = people[socket.id];
   });
   socket.on('leaveRoom', function(roomName) {
     console.log(people[socket.id].name + " left " + roomName);
     socket.leave(roomName);
     people[socket.id].room = '';
+    rooms[roomName].users[socket.id] = null;
   });
   socket.on('user', function(userName) {
     people[socket.id].name = userName;
