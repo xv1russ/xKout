@@ -17,8 +17,8 @@ $ '#chatForm'
 		false
 $ '#chatConnection'
 	.on 'submit', ->
-		userName = $('#user').val()
-		roomName = $('#room').val()
+		userName = $('#user').val().trim().toLowerCase()
+		roomName = $('#room').val().trim().toLowerCase()
 		if currentRoom == ''
 			if userName != '' and roomName != ''
 				console.log 'joining room'

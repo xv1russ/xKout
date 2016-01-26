@@ -21,8 +21,8 @@ $('#chatForm').on('submit', function() {
 
 $('#chatConnection').on('submit', function() {
   var roomName, userName;
-  userName = $('#user').val();
-  roomName = $('#room').val();
+  userName = $('#user').val().trim().toLowerCase();
+  roomName = $('#room').val().trim().toLowerCase();
   if (currentRoom === '') {
     if (userName !== '' && roomName !== '') {
       console.log('joining room');
