@@ -16,29 +16,27 @@ body {
 header,
 section,
 footer {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-around;
   width: 100%;
 }
 header,
 footer {
-  height: 10%;
   background: #808080;
+  height: 10%;
 }
 section {
+  background: #fdfdfd;
   flex-direction: column;
   height: 80%;
-  background: #fdfdfd;
 }
 section div {
-  width: 100%;
   display: flex;
+  width: 100%;
   justify-content: space-around;
 }
-section div imgfirst-child {
+section div img:first-child {
   display: none;
-}
-footer {
   background: #d3d3d3;
 }

@@ -1,33 +1,43 @@
 @import "/public/_sty/reset.css"
 
 @font-face
-	font-family Roboto
+	font-family: Roboto
 	src url('/public/_fnt/Roboto-Regular.ttf')
 
-html, body
+$back = #fdfdfd
+$head = grey
+$foot = lightgrey
+
+html, body {
 	font-family Roboto, sans-serif
-	height 100%
-	width 100%
-body
-	display flex
-	flex-direction column
-header, section, footer
-	display flex
-	align-items center
-	justify-content space-around
-	width 100%
-header, footer
-	height 10%
-	background grey
-section
-	flex-direction column
-	height 80%
-	background #fdfdfd
-	div
-		width 100%
-		display flex
-		justify-content space-around
-		imgfirst-child
-			display none
-footer
-	background lightgrey
+	height: 100%
+	width: 100%
+}
+body {
+	display: flex
+	flex-direction: column
+}
+header, section, footer {
+  align-items: center
+	display: flex
+	justify-content: space-around
+	width: 100%
+}
+header, footer {
+  background: $head
+	height: 10%
+}
+section {
+  background: $back
+	flex-direction: column
+	height: 80%
+	div {
+    display: flex
+    width: 100%
+    justify-content: space-around
+    img:first-child {
+      display: none
+      background: $foot
+    }
+  }
+}

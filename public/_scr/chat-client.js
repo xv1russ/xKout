@@ -42,9 +42,6 @@ $('#chatConnection').on('submit', () => {
     if (userName !== '' && roomName !== '') {
       socket.emit('user', userName)
       socket.emit('joinRoom', roomName)
-      currentRoom = roomName
-      $('#user').parent()
-        .hide()
     } else {
       alert('input values')
     }
@@ -53,7 +50,6 @@ $('#chatConnection').on('submit', () => {
     if (roomName !== '') {
       socket.emit('leaveRoom', currentRoom)
       socket.emit('joinRoom', roomName)
-      currentRoom = roomName
     } else {
       alert('input value')
     }
@@ -63,9 +59,18 @@ $('#chatConnection').on('submit', () => {
 /*
   ~~~ SOCKET.IO ~~~
 */
-// -- ON MESSAGE RECIEVE
+// -- ON MESSAGE RECIEVE --
 socket.on('chatMessage', (message, username) => {
   // Add it to the DOM
   $('#messages')
     .append($(`<li><p> ${username}:</p><img src='/public/_img/${message}.png'/></li>`))
+})
+// -- ON INITIALIZATION --
+socket.on('initted', () => {
+  $('#user').parent()
+    .hide()
+})
+// -- ON ROOM JOIN --
+socket.on('joined', (roomName) => {
+  currentRoom = roomName
 })
