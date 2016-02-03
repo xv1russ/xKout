@@ -1,3 +1,4 @@
+'use strict'
 const gulp = require('gulp')
 const stylus = require('gulp-stylus')
 const browserSync = require('browser-sync')

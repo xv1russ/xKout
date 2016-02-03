@@ -1,52 +1,54 @@
-var currentRoom, socket;
+'use strict'
+/* globals io, $, alert */
+const socket = io('/chat')
+let currentRoom = ''
 
-socket = io('/chat');
-
-currentRoom = '';
-
-$('#chatForm').on('submit', function() {
-  var card, msg, suite;
+$('#chatForm').on('submit', () => {
   if (currentRoom !== '') {
-    suite = $('#suite').val();
-    card = $('#card').val();
-    msg = suite + card;
-    console.log(msg);
-    socket.emit('chatMessage', msg);
-    $('#textfield').val('');
+    let suite = $('#suite')
+      .val()
+    let card = $('#card')
+      .val()
+    let msg = suite + card
+    console.log(msg)
+    socket.emit('chatMessage', msg)
+    $('#textfield')
+      .val('')
   } else {
-    alert('Join a channel first');
+    alert('Join a channel first')
   }
-  return false;
-});
+  return false
+})
 
-$('#chatConnection').on('submit', function() {
-  var roomName, userName;
-  userName = $('#user').val().trim().toLowerCase();
-  roomName = $('#room').val().trim().toLowerCase();
+$('#chatConnection').on('submit', () => {
+  let userName = $('#user').val().trim().toLowerCase()
+  let roomName = $('#room').val().trim().toLowerCase()
   if (currentRoom === '') {
     if (userName !== '' && roomName !== '') {
-      console.log('joining room');
-      socket.emit('user', userName);
-      socket.emit('joinRoom', roomName);
-      currentRoom = roomName;
-      $('#user').parent().hide();
+      console.log('joining room')
+      socket.emit('user', userName)
+      socket.emit('joinRoom', roomName)
+      currentRoom = roomName
+      $('#user').parent()
+        .hide()
     } else {
-      alert('input values');
+      alert('input values')
     }
   } else {
     if (roomName !== '') {
-      console.log('joining room');
-      socket.emit('leaveRoom', currentRoom);
-      socket.emit('joinRoom', roomName);
-      currentRoom = roomName;
+      console.log('joining room')
+      socket.emit('leaveRoom', currentRoom)
+      socket.emit('joinRoom', roomName)
+      currentRoom = roomName
     } else {
-      alert('input value');
+      alert('input value')
     }
   }
-  return false;
-});
+  return false
+})
 
-socket.on('chatMessage', function(message, username) {
-  console.log('Recieved message');
-  $('#messages').append($("<li><p>" + username + ":</p><img src='/public/_img/" + message + ".png'/></li>"));
-});
+socket.on('chatMessage', (message, username) => {
+  console.log('Recieved message')
+  $('#messages')
+    .append($(`<li><p> ${username}:</p><img src='/public/_img/${message}.png'/></li>`))
+})
