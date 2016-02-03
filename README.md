@@ -1,12 +1,8 @@
 xKout
-==
-
-Description
---
-An online implementation of 7km (حكم), which is a card game
+=====
 
 Todo
---
+----
 #### Version 1.0.0
 - [x] Add random card generation
 - [ ] Live card room creation - *in progress*
@@ -19,6 +15,6 @@ Todo
 	- [ ] give each participant a unique set of 9 cards
 	- [ ] Card buttons delete themselves when clicked
 	- [ ] Visual elements
-- [ ] Add game rulesp
+- [ ] Add game rules
 - [ ] Add Sign up and sign in functionality
 - [ ] Keep track of wins and losses
