@@ -1,24 +1,21 @@
-var express, router, utils;
+const express = require('express')
+const router = express.Router()
+const utils = require('./utils')
 
-express = require('express');
+utils.resetCards()
 
-router = express.Router();
-
-utils = require('./utils');
-
-utils.resetCards();
-
-router.get('/randomcard', function(req, res) {
-  var cardNames;
-  cardNames = utils.genCardNames();
-  utils.resetCards();
+router.get('/randomcard', (req, res) => {
+  var cardNames
+  cardNames = utils.genCardNames()
+  utils.resetCards()
   res.render('randomcard', {
     cardNames: cardNames
-  });
-});
+  })
+})
 
-router.route('/chat').get(function(req, res) {
-  return res.render('chat');
-});
+router.route('/chat')
+  .get((req, res) => {
+    return res.render('chat')
+  })
 
-module.exports = router;
+module.exports = router

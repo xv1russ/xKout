@@ -1,60 +1,52 @@
-var app, chat, express, http, io, people, port, rooms, router, socketIO;
+'use strict'
+const express = require('express')
+const router = require('./scripts/router')
+const io = require('socket.io')
+const app = express()
+const http = require('http').Server(app)
+const socketIO = io(http)
+const chat = socketIO.of('/chat')
+const port = 8080
 
-express = require('express');
+let people = {}
+let rooms = {}
 
-router = require('./scripts/router');
+app.set('view engine', 'jade')
+app.set('views', './views')
+app.use('/', router)
+app.use('/public', express['static']('./public'))
 
-io = require('socket.io');
+chat.on('connection', socket => {
+  people[socket.id] = {}
+  console.log('A user connected')
 
-app = express();
+  socket.on('joinRoom', roomName => {
+    console.log(people[socket.id].name + ' joined ' + roomName)
+    socket.join(roomName)
+    people[socket.id].room = roomName
+    rooms[roomName].users[socket.id] = people[socket.id]
+  })
 
-http = require('http').Server(app);
+  socket.on('leaveRoom', roomName => {
+    console.log(people[socket.id].name + ' left ' + roomName)
+    socket.leave(roomName)
+    people[socket.id].room = ''
+    delete rooms[roomName].users[socket.id]
+  })
+  socket.on('user', userName => {
+    people[socket.id].name = userName
+  })
 
-socketIO = io(http);
+  socket.on('disconnect', () => {
+    console.log('A user disconnected')
+  })
 
-chat = socketIO.of('/chat');
+  socket.on('chatMessage', message => {
+    console.log('Recieved message: ' + message)
+    chat.to(people[socket.id].room).emit('chatMessage', message, people[socket.id].name)
+  })
+})
 
-port = 8080;
-
-people = {};
-
-rooms = {};
-
-app.set('view engine', 'jade');
-
-app.set('views', './views');
-
-app.use('/', router);
-
-app.use('/public', express["static"]('./public'));
-
-chat.on('connection', function(socket) {
-  people[socket.id] = {};
-  console.log('A user connected');
-  socket.on('joinRoom', function(roomName) {
-    console.log(people[socket.id].name + " joined " + roomName);
-    socket.join(roomName);
-    people[socket.id].room = roomName;
-    rooms[roomName].users[socket.id] = people[socket.id];
-  });
-  socket.on('leaveRoom', function(roomName) {
-    console.log(people[socket.id].name + " left " + roomName);
-    socket.leave(roomName);
-    people[socket.id].room = '';
-    delete rooms[roomName].users[socket.id];
-  });
-  socket.on('user', function(userName) {
-    people[socket.id].name = userName;
-  });
-  socket.on('disconnect', function() {
-    console.log('A user disconnected');
-  });
-  socket.on('chatMessage', function(message) {
-    console.log("Recieved message: " + message);
-    chat.to(people[socket.id].room).emit('chatMessage', message, people[socket.id].name);
-  });
-});
-
-http.listen(port, function() {
-  console.log("Listening on " + port);
-});
+http.listen(port, () => {
+  console.log('Listening on ' + port)
+})
