@@ -1,13 +1,20 @@
 'use strict'
+/*
+  ~~~ DECLARATIONS ~~~
+*/
+// -- REQUIRES --
 const express = require('express')
-const router = express.Router()
 const utils = require('./utils')
-
+// Instants
+const router = express.Router()
+/*
+  ~~~ ROUTES ~~~
+*/
+// -- INITIALISE CARDS --
 utils.resetCards()
-
+// -- ROUTES --
 router.get('/randomcard', (req, res) => {
-  var cardNames
-  cardNames = utils.genCardNames()
+  let cardNames = utils.genCardNames()
   utils.resetCards()
   res.render('randomcard', {
     cardNames: cardNames
