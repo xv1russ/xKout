@@ -1,9 +1,14 @@
 'use strict'
+/*
+  ~~~ DECLARATIONS ~~~
+*/
+// -- VARIABLES --
+// Objects
 let utils = {}
-
+// Object properties
 utils.cards = []
-
 utils.genCardNames = () => {
+  // Create a card names object and put random card names into it
   let cardNames = {}
   for (let i = 1; i <= 6; i++) {
     cardNames[i] = []
@@ -13,13 +18,14 @@ utils.genCardNames = () => {
   }
   return cardNames
 }
-
 utils.createCardName = () => {
+  /* Get the cards object and take out a random card from within it
+  and return it */
   let position = Math.floor(Math.random() * utils.cards.length)
   return utils.cards.splice(position, 1)
 }
-
 utils.resetCards = () => {
+  // Create a cards object and put the standard 54 cards in it
   for (let i = 1; i <= 13; i++) {
     utils.cards[i - 1] = `club${i}`
     utils.cards[i + 12] = `dmnd${i}`
@@ -30,5 +36,7 @@ utils.resetCards = () => {
     }
   }
 }
-
+/*
+  ~~~ EXPORTS ~~~
+*/
 module.exports = utils

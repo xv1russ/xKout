@@ -13,17 +13,20 @@ const router = express.Router()
 // -- INITIALISE CARDS --
 utils.resetCards()
 // -- ROUTES --
+// /randomcard
 router.get('/randomcard', (req, res) => {
+  // Generate cards and pass it into the view
   let cardNames = utils.genCardNames()
   utils.resetCards()
   res.render('randomcard', {
     cardNames: cardNames
   })
 })
-
-router.route('/chat')
-  .get((req, res) => {
-    return res.render('chat')
-  })
-
+// /chat
+router.route('/chat', (req, res) => {
+  res.render('chat')
+})
+/*
+  ~~~ EXPORTS ~~~
+*/
 module.exports = router
