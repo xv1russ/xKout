@@ -1,52 +1,27 @@
-var browserSync, coffee, globs, gulp, stylus;
+const gulp = require('gulp')
+const stylus = require('gulp-stylus')
+const browserSync = require('browser-sync')
+  .create()
 
-gulp = require('gulp');
+const globs = {
+  stylus: './components/stylus/*.styl',
+  jade: './views/*.jade'
+}
 
-coffee = require('gulp-coffee');
+gulp.task('default', ['css'])
 
-stylus = require('gulp-stylus');
+gulp.task('css', () => {
+  gulp.src(globs.stylus).pipe(stylus()).pipe(gulp.dest('./public/_sty/'))
+})
 
-browserSync = require('browser-sync').create();
-
-globs = {
-  coffee: "./components/*/*.coffee",
-  coffee_main: "./components/coffee/!(gulpfile|xkout).coffee",
-  coffee_root: "./components/coffee/?(gulpfile|xkout).coffee",
-  coffee_public: "./components/coffee_public/*.coffee",
-  stylus: "./components/stylus/*.styl",
-  jade: "./views/*.jade"
-};
-
-gulp.task('default', ['js', 'css']);
-
-gulp.task('js', function() {
-  console.log('running js task');
-  gulp.src(globs.coffee_main).pipe(coffee({
-    bare: true
-  })).pipe(gulp.dest('./scripts'));
-  gulp.src(globs.coffee_root).pipe(coffee({
-    bare: true
-  })).pipe(gulp.dest('./'));
-  gulp.src(globs.coffee_public).pipe(coffee({
-    bare: true
-  })).pipe(gulp.dest('./public/_scr/'));
-});
-
-gulp.task('css', function() {
-  console.log('running css task');
-  gulp.src(globs.stylus).pipe(stylus()).pipe(gulp.dest('./public/_sty/'));
-});
-
-gulp.task('dev', function() {
-  console.log('running browserinit task');
+gulp.task('dev', () => {
   browserSync.init({
-    proxy: "localhost:8080/chat"
-  });
-  gulp.watch(globs.stylus, ['css', 'reload']);
-  gulp.watch(globs.coffee, ['js', 'reload']);
-  gulp.watch(globs.jade, ['reload']);
-});
+    proxy: 'localhost:8080/chat'
+  })
+  gulp.watch(globs.stylus, ['css', 'reload'])
+  gulp.watch(globs.jade, ['reload'])
+})
 
-gulp.task('reload', function() {
-  return browserSync.reload();
-});
+gulp.task('reload', () => {
+  browserSync.reload()
+})
