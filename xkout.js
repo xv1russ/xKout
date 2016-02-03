@@ -5,8 +5,8 @@
 // -- CONSTANTS --
 // Requires
 const express = require('express')
-const router = require('./scripts/router')
 const io = require('socket.io')
+const router = require('./scripts/router')
 // Instants
 const app = express()
 const http = require('http').Server(app)
@@ -37,11 +37,16 @@ chat.on('connection', socket => {
   people[socket.id] = {}
   // On request to join a room
   socket.on('joinRoom', roomName => {
-    // Join socket to said room
-    socket.join(roomName)
-    // Update objects
-    people[socket.id].room = roomName
-    rooms[roomName].users[socket.id] = people[socket.id]
+    // If room has less then 6 people
+    if (rooms[roomName] && rooms[roomName].users.length < 6) {
+      // Join socket to said room
+      socket.join(roomName)
+      // Update objects
+      people[socket.id].room = roomName
+      rooms[roomName].users[socket.id] = people[socket.id]
+    } else {
+      console.log('Room full')
+    }
   })
   // On request to leave a room
   socket.on('leaveRoom', roomName => {

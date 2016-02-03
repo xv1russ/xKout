@@ -1,6 +1,6 @@
 {
   "name": "xkout",
-  "version": "0.5.3",
+  "version": "0.5.5",
   "description": "Online 7km game made with node.js",
   "main": "xkout.js",
   "repository": {

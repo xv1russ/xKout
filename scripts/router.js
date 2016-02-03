@@ -5,8 +5,9 @@
 // -- REQUIRES --
 const express = require('express')
 const utils = require('./utils')
-// Instants
-const router = express.Router()
+// -- VARIABLES --
+// Objects
+let router = express.Router()
 /*
   ~~~ ROUTES ~~~
 */
@@ -23,7 +24,7 @@ router.get('/randomcard', (req, res) => {
   })
 })
 // /chat
-router.route('/chat', (req, res) => {
+router.get('/chat', (req, res) => {
   res.render('chat')
 })
 /*
