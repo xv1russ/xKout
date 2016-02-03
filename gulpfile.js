@@ -21,6 +21,9 @@ gulp.task('dev', () => {
   browserSync.init({
     proxy: 'localhost:8080/chat'
   })
+
+  gulp.watch(globs.javascript, ['reload'])
+  gulp.watch(globs.javascriptClient, ['reload'])
   gulp.watch(globs.stylus, ['css', 'reload'])
   gulp.watch(globs.jade, ['reload'])
 })
