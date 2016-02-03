@@ -5,6 +5,8 @@ const browserSync = require('browser-sync')
   .create()
 
 const globs = {
+  javascript: './*.js',
+  javascriptClient: './public/_scr/*.js',
   stylus: './components/stylus/*.styl',
   jade: './views/*.jade'
 }
