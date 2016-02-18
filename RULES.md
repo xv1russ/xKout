@@ -43,7 +43,7 @@ Card Strength
 -------------
 - The weakest cards are all suites that aren't either the suite of the
 starting suite or the trump suites
-- Then cards for the starting suite going from 2 to 9, then J, Q, K, A
+- Then cards for the starting suite going from 2 to 10, then J, Q, K, A
 - The trump suite cards are stronger than all starting suite cards
 following the same order of strength
 - The jokers are stronger than everything, the red joker being the stronger of
