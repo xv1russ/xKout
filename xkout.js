@@ -39,31 +39,24 @@ chat.on('connection', socket => {
   socket.on('joinRoom', roomName => {
     // If room has less then 6 people
     if (rooms[roomName] != null) {
-      if (chat.clients(roomName).length < 6) {
-        console.log('Room not full')
+      console.log('Room created')
 
-        console.log(`Room: ${roomName}
-  users: ${chat.clients(roomName)}
-  connected: ${chat.clients(roomName).length}`)
-        // Join socket to said room
-        socket.join(roomName)
-        // Update objects
-        people[socket.id].room = roomName
-        rooms[roomName].users[socket.id] = people[socket.id]
-        socket.emit('joined', roomName)
-      }
-    } else if (rooms[roomName] == null) {
-      console.log('Room null')
+      console.log(`Room: ${roomName}`)
+      // Join socket to said room
       socket.join(roomName)
-      rooms[roomName] = {}
-      rooms[roomName].users = []
+      // Update objects
+      people[socket.id].room = roomName
       rooms[roomName].users[socket.id] = people[socket.id]
       socket.emit('joined', roomName)
     } else {
-      console.log('Room full')
-      console.log(`Room: ${roomName}
-users: ${chat.clients(roomName)}
-connected: ${chat.clients(roomName).length}`)
+      console.log('Room null')
+      socket.join(roomName)
+
+      people[socket.id].room = roomName
+      rooms[roomName] = {}
+      rooms[roomName].users = {}
+      rooms[roomName].users[socket.id] = people[socket.id]
+      socket.emit('joined', roomName)
     }
   })
   // On request to leave a room
