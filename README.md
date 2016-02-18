@@ -1,6 +1,8 @@
 xKout
 =====
 
+[![Join the chat at https://gitter.im/Zunon/xKout](https://badges.gitter.im/Zunon/xKout.svg)](https://gitter.im/Zunon/xKout?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Todo
 ----
 #### Version 1.0.0
