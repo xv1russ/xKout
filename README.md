@@ -6,7 +6,7 @@ xKout
 Game Rules
 ----------
 The game rules are available
-[here](https://github.com/Zunon/xKout/blob/master/RULES.md)
+[here](https://github.com/scimitar-software/xKout/blob/master/RULES.md)
 
 Todo
 ----
