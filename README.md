@@ -3,6 +3,11 @@ xKout
 
 [![Join the chat at https://gitter.im/Zunon/xKout](https://badges.gitter.im/Zunon/xKout.svg)](https://gitter.im/Zunon/xKout?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+Game Rules
+----------
+The game rules are available
+[here](https://github.com/Zunon/xKout/blob/master/RULES.md)
+
 Todo
 ----
 #### Version 1.0.0
@@ -20,3 +25,8 @@ Todo
 - [ ] Add game rules
 - [ ] Add Sign up and sign in functionality
 - [ ] Keep track of wins and losses
+
+Collaboration
+-------------
+Any and all help is welcome, please submit a pull request or ask to be added as
+a contributor if you want to help.
